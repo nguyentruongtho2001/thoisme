@@ -15,14 +15,14 @@ export default {
   source: "https://github.com/davidhckh/pokedex",
   videoBorder: true,
   description:
-    "Eines meiner ersten Webprojekte, um Kernkonzepte der Webentwicklung zu üben. Der Pokédex ist Open Source, damit andere Entwickler auf dieselbe Weise lernen können wie ich.<br/><br/>Er interagiert außerdem mit einer öffentlichen API, um zusätzliche Erfahrung zu sammeln.",
+    "Một trong những dự án web đầu tiên của tôi để luyện tập các khái niệm lập trình web cơ bản. Pokédex là mã nguồn mở để các lập trình viên khác có thể học theo cách tôi đã từng học.<br/><br/>Nó cũng tương tác với một API công khai để tích lũy thêm kinh nghiệm về việc lấy dữ liệu bất đồng bộ.",
   components: [
     {
       type: "media",
       props: {
         type: "video",
         src: videoPokedex,
-        caption: "Pokédex Anwendung",
+        caption: "Ứng dụng Pokédex",
       },
     },
     {
@@ -30,8 +30,8 @@ export default {
       props: {
         type: "image",
         src: pokedex0,
-        alt: "Standardansicht",
-        caption: "Standardansicht",
+        alt: "Chế độ xem mặc định",
+        caption: "Chế độ xem mặc định",
       },
     },
     {
@@ -39,8 +39,8 @@ export default {
       props: {
         type: "image",
         src: pokedex1,
-        alt: "Suchfunktion",
-        caption: "Suchfunktion",
+        alt: "Chức năng tìm kiếm",
+        caption: "Chức năng tìm kiếm",
       },
     },
     {
@@ -48,8 +48,8 @@ export default {
       props: {
         type: "image",
         src: pokedex2,
-        alt: "Responsives Design",
-        caption: "Responsives Design",
+        alt: "Thiết kế đáp ứng",
+        caption: "Thiết kế đáp ứng",
       },
     },
     {
@@ -57,8 +57,8 @@ export default {
       props: {
         type: "image",
         src: pokedex3,
-        alt: "Lazy-Loading",
-        caption: "Lazy-Loading",
+        alt: "Lazy Loading",
+        caption: "Lazy Loading",
       },
     },
   ],

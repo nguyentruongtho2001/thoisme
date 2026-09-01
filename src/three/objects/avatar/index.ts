@@ -28,8 +28,36 @@ const uniforms = { uProgress: { value: 0 }, uAmbientStrength: { value: 0 } };
 const contactPosition = new Vector3(0, -13, 0);
 const contactRotation = new Euler(0, -Math.PI, 0);
 
+// Slight width squeeze to hint at a slim build (1 = unchanged). Easily reverted.
+const THIN_SCALE = 0.93;
+
+// Hairline: the top part of the head mesh is darkened to black (hair).
+const HAIR_TOP_RATIO = 0.7;
+let headHairY = 0;
+
+// Recolor palette (per mesh name) to give the avatar a different look.
+// color is [r,g,b] 0-255; amount is the mix factor (0 = original, 1 = full tint).
+const RECOLOR: Record<string, { color: [number, number, number]; amount: number }> = {
+  // Pale / fair skin (Asian, light complexion)
+  skin: { color: [0xf5, 0xe9, 0xdd], amount: 0.55 },
+  head: { color: [0xf5, 0xe9, 0xdd], amount: 0.5 },
+  black: { color: [0x3a, 0x44, 0x52], amount: 0.55 },
+  gray: { color: [0x4d, 0x6a, 0x63], amount: 0.6 },
+  white: { color: [0xe2, 0xd6, 0xc0], amount: 0.5 },
+};
+
+const toTint = (name: string) => {
+  const item = RECOLOR[name];
+  if (!item) return { value: new Vector3(1, 1, 1), amount: 0 };
+  return {
+    value: new Vector3(item.color[0] / 255, item.color[1] / 255, item.color[2] / 255),
+    amount: item.amount,
+  };
+};
+
 const init = () => {
   setupMesh();
+  transform.scale.set(THIN_SCALE, 1, 1);
   animations.init();
   face.init();
   avatarLeftDesktop.init();
@@ -43,12 +71,16 @@ const getMaterial = (name: string): Material | null => {
     texture.flipY = false;
     texture.colorSpace = LinearSRGBColorSpace;
     texture.generateMipmaps = false;
+    const tint = toTint("head");
     return new ShaderMaterial({
       vertexShader: headVertexShader,
       fragmentShader: headFragmentShader,
       transparent: true,
       uniforms: {
         uHeadTexture: { value: texture },
+        uTint: { value: tint.value },
+        uTintAmount: { value: tint.amount },
+        uHairY: { value: headHairY },
         ...uniforms,
       },
     });
@@ -58,12 +90,16 @@ const getMaterial = (name: string): Material | null => {
   tex.colorSpace = LinearSRGBColorSpace;
   tex.generateMipmaps = false;
 
+  const tint = toTint(name);
+
   return new ShaderMaterial({
     vertexShader: matcapVertexShader,
     fragmentShader: matcapFragmentShader,
     transparent: true,
     uniforms: {
       uMatcap: { value: tex },
+      uTint: { value: tint.value },
+      uTintAmount: { value: tint.amount },
       ...uniforms,
     },
   });
@@ -97,6 +133,13 @@ const setupMesh = () => {
   mesh = cloneSkeleton(resource.scene.children[0]) as Mesh;
 
   mesh.frustumCulled = false;
+
+  const headMesh = mesh.getObjectByName("head") as Mesh | null;
+  if (headMesh) {
+    headMesh.geometry.computeBoundingBox();
+    const hb = headMesh.geometry.boundingBox!;
+    headHairY = hb.min.y + (hb.max.y - hb.min.y) * HAIR_TOP_RATIO;
+  }
 
   mesh.traverse((child) => {
     if (child instanceof Mesh) {

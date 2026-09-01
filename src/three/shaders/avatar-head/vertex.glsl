@@ -2,6 +2,7 @@
 #include ../includes/avatar-progress/vertex.glsl;
 
 varying vec2 vUv;
+varying float vHeadY;
 
 void main() {
     #include <skinbase_vertex>
@@ -12,4 +13,5 @@ void main() {
 
     vModelProgress = getModelProgress(transformed);
     vUv = uv;
+    vHeadY = position.y;
 }

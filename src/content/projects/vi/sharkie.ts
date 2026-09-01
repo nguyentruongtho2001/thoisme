@@ -15,7 +15,7 @@ export default {
   live: "https://sharkie.david-hckh.com/",
   source: "https://github.com/davidhckh/sharkie-game",
   description:
-    "Sharkie ist ein 2D-Unterwasser-Abenteuerspiel, entwickelt mit Vanilla JavaScript und HTML5 Canvas.<br/><br/>Das Projekt basiert auf objektorientierten Programmierprinzipien und nutzt eigene Klassen für Spielfiguren, Gegner und Spielsysteme, ergänzt durch flüssige Animationen, Kampfsysteme und mehrschichtige Parallax-Hintergründe.",
+    "Sharkie là một tựa game phiêu lưu dưới nước 2D được xây dựng bằng JavaScript thuần và HTML5 Canvas.<br/><br/>Dự án được tổ chức theo các nguyên tắc lập trình hướng đối tượng, sử dụng các lớp (class) tùy chỉnh cho nhân vật, kẻ địch và hệ thống trò chơi, cùng các hiệu ứng chuyển động mượt mà, cơ chế chiến đấu và nền parallax nhiều lớp.",
   components: [
     {
       type: "media",
@@ -30,8 +30,8 @@ export default {
       props: {
         type: "image",
         src: sharkie0,
-        alt: "Spielfiguren und Karten-Design",
-        caption: "Spielfiguren und Karten-Design",
+        alt: "Nhân vật và thiết kế bản đồ",
+        caption: "Nhân vật và thiết kế bản đồ",
       },
     },
     {
@@ -39,8 +39,8 @@ export default {
       props: {
         type: "image",
         src: sharkie1,
-        alt: "Boss-Kampf",
-        caption: "Boss-Kampf",
+        alt: "Trận boss",
+        caption: "Trận boss",
       },
     },
     {
@@ -48,8 +48,8 @@ export default {
       props: {
         type: "image",
         src: sharkie2,
-        alt: "Mission",
-        caption: "Mission",
+        alt: "Nhiệm vụ",
+        caption: "Nhiệm vụ",
       },
     },
     {
@@ -57,8 +57,8 @@ export default {
       props: {
         type: "image",
         src: sharkie3,
-        alt: "Sieg-Screen",
-        caption: "Sieg-Screen",
+        alt: "Màn hình chiến thắng",
+        caption: "Màn hình chiến thắng",
       },
     },
     {
@@ -66,8 +66,8 @@ export default {
       props: {
         type: "image",
         src: sharkie4,
-        alt: "Todes-Screen",
-        caption: "Todes-Screen",
+        alt: "Màn hình thất bại",
+        caption: "Màn hình thất bại",
       },
     },
   ],

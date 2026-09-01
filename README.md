@@ -1,6 +1,6 @@
 # Portfolio (2025)
 
-Personal portfolio site: project case studies, lightweight 3D and shader demos, bilingual copy (English and German).
+Personal portfolio site: project case studies, lightweight 3D and shader demos, bilingual copy (English and Vietnamese).
 
 Built with **Vue 3**, **TypeScript**, and **Vite**. Motion via **GSAP** and **Lenis**, 3D via **three.js**, audio via **Howler**. GLSL is compiled through **vite-plugin-glsl**.
 
@@ -15,7 +15,7 @@ Built with **Vue 3**, **TypeScript**, and **Vite**. Motion via **GSAP** and **Le
 
 ## Content
 
-- **Projects**: `src/content/projects/{en,de}/<slug>.ts` — copy, tags, media, links. Slugs must align with `projectIds` in `src/content/projects/index.ts`.
+- **Projects**: `src/content/projects/{en,vi}/<slug>.ts` — copy, tags, media, links. Slugs must align with `projectIds` in `src/content/projects/index.ts`.
 - **Previews / listing**: `src/content/projects/previews/`.
 - **Tags**: variants and labels live in `src/components/tagVariants.ts` (used by `Tag.vue` and content types).
 

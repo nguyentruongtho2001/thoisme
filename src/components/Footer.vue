@@ -45,7 +45,7 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
           <div class="footer-top-links-legal">
             <Clickable renderAs="div">
               <Link
-                :href="locale === 'de' ? '/de/privacy' : '/privacy'"
+                :href="locale === 'vi' ? '/vi/privacy' : '/privacy'"
                 class="footer-link"
                 :external="true"
                 data-cursor="circle-white"
@@ -56,7 +56,7 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
             </Clickable>
             <Clickable renderAs="div">
               <Link
-                :href="locale === 'de' ? '/de/legal' : '/legal'"
+                :href="locale === 'vi' ? '/vi/legal' : '/legal'"
                 class="footer-link children-unclickable"
                 :external="true"
                 data-cursor="circle-white"
@@ -75,14 +75,7 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
             {{ t("original-concept-by") }}
           </p>
           <Clickable renderAs="div">
-            <Link
-              href="https://david-hckh.com"
-              class="footer-link children-unclickable"
-              external
-              data-cursor="circle-white"
-              data-hoversound="hover"
-              >David Heckhoff</Link
-            >
+            <span class="footer-link children-unclickable">Nguyễn Trường Thọ</span>
           </Clickable>
         </div>
         <div class="footer-credits-music">
@@ -100,7 +93,7 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
             >
           </Clickable>
         </div>
-        <p>© {{ new Date().getFullYear() }} David Heckhoff</p>
+        <p>© {{ new Date().getFullYear() }} Thọ</p>
       </div>
     </div>
   </footer>

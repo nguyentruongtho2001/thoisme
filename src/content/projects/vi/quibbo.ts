@@ -15,14 +15,14 @@ export default {
   tags: ["three", "node", "kubernetes", "redis", "postgresql"],
   videoBorder: true,
   description:
-    "Quibbo ist eine Plattform für schnelle, rundenbasierte Multiplayer-Spiele. Sie verbindet Matchmaking, anpassbare 3D-Avatare und Account-Integration mit einem Rangsystem auf ELO-Basis.<br/><br/>Das Projekt begann als technisches Experiment und entwickelte sich zu einem skalierbaren System, um neue Spielideen auszuprobieren.",
+    "Quibbo là một nền tảng cho các game nhiều người chơi theo lượt diễn ra nhanh. Nó kết hợp hệ thống xếp trận (matchmaking), avatar 3D có thể tùy chỉnh và tích hợp tài khoản với phần thưởng xếp hạng.<br/><br/>Dự án bắt đầu như một thử nghiệm kỹ thuật và phát triển thành một hệ thống có khả năng mở rộng để thử nghiệm các ý tưởng game mới.",
   components: [
     {
       type: "media",
       props: {
         type: "video",
         src: videoQuibbo,
-        caption: "Benutzeroberfläche",
+        caption: "Trải nghiệm người dùng",
       },
     },
     {
@@ -30,8 +30,8 @@ export default {
       props: {
         type: "image",
         src: quibbo0,
-        alt: "Avatar Ersteller",
-        caption: "Avatar Ersteller",
+        alt: "Trình tạo Avatar",
+        caption: "Trình tạo Avatar",
       },
     },
     {
@@ -39,8 +39,8 @@ export default {
       props: {
         type: "image",
         src: quibbo1,
-        alt: "Mehrspieler Tic-Tac-Toe",
-        caption: "Mehrspieler Tic-Tac-Toe",
+        alt: "Tic-Tac-Toe nhiều người chơi",
+        caption: "Tic-Tac-Toe nhiều người chơi",
       },
     },
     {
@@ -48,8 +48,8 @@ export default {
       props: {
         type: "image",
         src: quibbo2,
-        alt: "Verschiedene Minispiele",
-        caption: "Verschiedene Minispiele",
+        alt: "Nhiều mini-game",
+        caption: "Nhiều mini-game",
       },
     },
     {
@@ -57,8 +57,8 @@ export default {
       props: {
         type: "image",
         src: quibbo3,
-        alt: "Avatar Variationen",
-        caption: "Avatar Variationen",
+        alt: "Các biến thể Avatar",
+        caption: "Các biến thể Avatar",
       },
     },
     {
@@ -66,8 +66,8 @@ export default {
       props: {
         type: "image",
         src: quibbo4,
-        alt: "Responsives Design",
-        caption: "Responsives Design",
+        alt: "Thiết kế đáp ứng",
+        caption: "Thiết kế đáp ứng",
       },
     },
     {
@@ -75,8 +75,8 @@ export default {
       props: {
         type: "image",
         src: quibbo5,
-        alt: "Dunkles Design",
-        caption: "Dunkles Design",
+        alt: "Chế độ tối",
+        caption: "Chế độ tối",
       },
     },
   ],
