@@ -1,21 +1,22 @@
 export const useRouter = () => {
   const push = (path: string) => {
     if (typeof window !== "undefined") {
-      // The intercepted pushState in useRoute.ts will automatically trigger path updates
-      window.history.pushState(null, "", path);
+      // Hash-based routing so deep links & refresh work on GitHub Pages (subpath).
+      window.location.hash = "#" + path;
     }
   };
 
   const replace = (path: string) => {
     if (typeof window !== "undefined") {
-      // The intercepted replaceState in useRoute.ts will automatically trigger path updates
-      window.history.replaceState(null, "", path);
+      const baseUrl = window.location.href.split("#")[0];
+      window.history.replaceState(null, "", `${baseUrl}#${path}`);
+      window.dispatchEvent(new Event("route-change"));
     }
   };
 
   const back = () => {
     if (typeof window !== "undefined") {
-      window.history?.back?.();
+      window.history.back();
     }
   };
 

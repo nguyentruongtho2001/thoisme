@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thọ</title>
+    <script>
+      // GitHub Pages serves this file for any 404. Redirect the (deep-link) path to
+      // the same route as a hash so the SPA can render it.
+      (function () {
+        var base = "/thoisme/";
+        var p = window.location.pathname;
+        var route = p.startsWith(base) ? p.slice(base.length) : p;
+        if (route && route.length > 1) {
+          window.location.replace(base + "#" + route);
+        } else {
+          window.location.replace(base);
+        }
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

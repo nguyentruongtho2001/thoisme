@@ -2,10 +2,15 @@ import { ref, computed, onMounted, onUnmounted } from "vue";
 import { isTransitioning } from "./useProjectTransition";
 
 // -----------------------------------------------------------------------------
-// GLOBAL REACTIVE PATH
+// GLOBAL REACTIVE PATH (hash-based so it survives GitHub Pages subpath + refresh)
 // -----------------------------------------------------------------------------
 
-export const path = ref(typeof window !== "undefined" ? window.location.pathname : "/");
+const getRoute = () => {
+  if (typeof window === "undefined") return "/";
+  return window.location.hash.replace(/^#/, "") || "/";
+};
+
+export const path = ref(getRoute());
 
 // -----------------------------------------------------------------------------
 // COMPUTED HELPERS
@@ -34,52 +39,27 @@ export const recentProjectId = computed(() => {
 });
 
 // -----------------------------------------------------------------------------
-// HISTORY PATCH (safe & minimal)
-// -----------------------------------------------------------------------------
-
-let historyPatched = false;
-
-function patchHistory() {
-  if (historyPatched || typeof window === "undefined") return;
-  historyPatched = true;
-
-  const wrap = (key: "pushState" | "replaceState") => {
-    const original = history[key];
-    history[key] = function (...args) {
-      // @ts-ignore
-      original.apply(this, args);
-
-      // IMPORTANT FIX: delay events to avoid reactivity collisions
-      queueMicrotask(() => {
-        window.dispatchEvent(new Event("route-change"));
-      });
-    };
-  };
-
-  wrap("pushState");
-  wrap("replaceState");
-}
-
-// -----------------------------------------------------------------------------
 // COMPOSABLE
 // -----------------------------------------------------------------------------
 
 export function useRouteObserver() {
   const update = () => {
-    const newPath = window.location.pathname;
+    const newPath = getRoute();
     if (newPath !== path.value) {
       path.value = newPath;
     }
   };
+
   onMounted(() => {
-    patchHistory();
     update();
 
+    window.addEventListener("hashchange", update);
     window.addEventListener("popstate", update);
     window.addEventListener("route-change", update);
   });
 
   onUnmounted(() => {
+    window.removeEventListener("hashchange", update);
     window.removeEventListener("popstate", update);
     window.removeEventListener("route-change", update);
   });
